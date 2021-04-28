@@ -1,4 +1,4 @@
-# bluecube-unsplash-test
+# bluecube
 
 ## Project setup
 ```
