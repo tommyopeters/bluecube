@@ -4,7 +4,7 @@
     <div class="container">
       <Header />
       <Filters />
-      <Users />
+      <Profiles />
     </div>
   </div>
 </template>
@@ -13,7 +13,7 @@
 import SideNav from "./components/SideNav.vue";
 import Header from "./components/Header.vue";
 import Filters from "./components/Filters.vue";
-import Users from "./components/Users.vue";
+import Profiles from "./components/Profiles.vue";
 
 export default {
   name: "App",
@@ -21,11 +21,9 @@ export default {
     SideNav,
     Header,
     Filters,
-    Users
+    Profiles,
   },
-  created() {
-    console.log(this.$store.state.count);
-  }
+  methods: {},
 };
 </script>
 

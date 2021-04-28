@@ -70,17 +70,21 @@ header,
         border-radius: 4px;
         border: 1px solid transparent;
 
-        font-weight: 400;
+        font-weight: 500;
 
         i {
-          margin-right: 1rem;
+          margin-right: 1.5rem;
         }
 
         &.active {
           color: $base-color;
-          font-weight: 500;
+          font-weight: 600;
           box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.044);
           border: 1px solid rgba(0, 0, 0, 0.092);
+
+          span {
+            color: rgba(0, 0, 0, 0.642);
+          }
         }
         &:hover {
           box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.044);
@@ -168,7 +172,7 @@ header,
           position: absolute;
           bottom: 0;
           right: 0;
-          transform: translate(50%, -50%);
+          transform: translate(30%, -50%);
         }
       }
 
@@ -192,6 +196,32 @@ header,
     section.filters {
       display: flex;
       align-items: center;
+    }
+    section.profiles {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 2rem;
+      .profile {
+        width: 18rem;
+        height: 26rem;
+        background-repeat: no-repeat;
+        background-size: auto 100%;
+
+        color: white;
+
+        &:after {
+          content: "";
+          height: 100%;
+          width: 100%;
+          background-image: linear-gradient(
+            0deg,
+            rgba(2, 0, 36, 0.44021358543417366) 6%,
+            rgba(0, 0, 0, 0.21332282913165268) 38%,
+            rgba(255, 255, 255, 0) 100%
+          );
+        }
+      }
     }
   }
 }
