@@ -1,0 +1,91 @@
+.checkbox {
+  display: none;
+
+  & + label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    .checkmark:after {
+      content: "";
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 14px;
+      width: 14px;
+      font-size: 11px;
+      margin-right: 1rem;
+      border: 0.5px solid rgba(0, 0, 0, 0.2);
+      border-radius: 2px;
+
+      color: white;
+      background-color: #ffffff;
+      box-shadow: inset 0 0.5px 0.5px 0 rgba(0, 0, 0, 0.25);
+      transition: all 150ms ease-in-out;
+    }
+    .checkmark.dash:after {
+      font-size: 2rem;
+    }
+
+    &:hover {
+      .checkmark:after {
+        background-color: #3a9bfc3a;
+      }
+    }
+  }
+  &:checked + label {
+    .checkmark:after {
+      content: "\2714";
+      background-color: #3a9afc;
+      box-shadow: inset 0 0.5px 0.5px 0 rgba(0, 0, 0, 0.25);
+    }
+    .checkmark.dash:after {
+      content: "-";
+    }
+  }
+}
+
+.checkbox-switch {
+  display: none;
+  & + label {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    color: grey;
+    font-size: 14px;
+
+    span {
+      position: relative;
+      display: inline-block;
+      height: 16px;
+      width: 24px;
+      background-color: grey;
+      border-radius: 16px;
+
+      &:before {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 2px;
+        left: 2px;
+        width: 12px;
+        height: 12px;
+        border-radius: 100%;
+        background-color: white;
+        transition: all 200ms ease-in-out;
+      }
+    }
+  }
+  &:checked + label {
+    color: black;
+
+    span {
+      background-color: #3ae03f;
+
+      &:before {
+        transform: translateX(8px);
+      }
+    }
+  }
+}

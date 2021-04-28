@@ -1,0 +1,110 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh; /* Fallback for browsers that do not support Custom Properties */
+  height: calc(var(--vh, 1vh) * 100);
+
+  z-index: 99999999;
+  overflow-y: auto;
+  &-item {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.6);
+  }
+  &-content {
+    position: relative;
+    padding: 2rem 3rem;
+    // min-width: 400px;
+    // min-height: 300px;
+    background-color: white;
+    border-radius: 11px;
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.07), 0 3px 15px 0 rgba(0, 0, 0, 0.15);
+
+    .modal-header {
+      color: #01051b;
+      width: 100%;
+      text-align: center;
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 2.5rem;
+    }
+    .modal-body {
+      &-inner {
+        margin-bottom: 0.5rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        .image-control {
+          width: 5.6rem;
+          height: 5.6rem;
+          margin-bottom: 2.5rem;
+          img {
+            width: 100%;
+          }
+          &.reset-image {
+            width: 64px;
+            height: 64px;
+          }
+        }
+        p {
+          margin-bottom: 2.5rem;
+          text-align: center;
+          color: #01051b;
+          font-family: Inter;
+          font-size: 14px;
+          letter-spacing: 0;
+          line-height: 24px;
+        }
+      }
+      .action-buttons {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        column-gap: 1.2rem;
+
+        margin-bottom: 1.5rem;
+        div,
+        a {
+          text-decoration: none;
+          cursor: pointer;
+          width: 100%;
+          padding: 1.5rem 3rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 6px;
+          font-size: 14px;
+          font-weight: 500;
+        }
+        .cancel {
+          border: 1px solid #cccfdf;
+          color: #7b7d8d;
+          background-color: white;
+        }
+        .delete {
+          color: white;
+          background-color: #c92a2a;
+        }
+        .reset {
+          color: white;
+          background-color: #054da5;
+        }
+      }
+    }
+    .modal-close {
+      position: absolute;
+      top: 0px;
+      right: 0;
+      font-size: 2.5rem;
+      line-height: 1.8rem;
+      padding: 1.5rem;
+      cursor: pointer;
+    }
+  }
+}

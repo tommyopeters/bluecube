@@ -1,0 +1,144 @@
+.table-container {
+  overflow-x: auto;
+}
+table.table {
+  width: 100%;
+  min-width: 100rem;
+  border-collapse: collapse;
+
+  &.slim {
+    min-width: 600px;
+  }
+
+  thead {
+    tr {
+      box-shadow: inset 0 -2.5px 0 0 rgba(0, 0, 0, 0.15);
+      th {
+        text-align: start;
+        padding: 8px 0;
+
+        opacity: 0.63;
+        font-size: 14px;
+        font-weight: 500;
+
+        &:first-of-type {
+          padding-left: 8px;
+        }
+        &:last-of-type {
+          padding-right: 8px;
+        }
+      }
+    }
+  }
+  tbody {
+    tr {
+      box-shadow: inset 0 -1px 0 0 rgba(0, 0, 0, 0.15);
+      td {
+        padding: 8px 0;
+        font-size: 14px;
+        &:first-of-type {
+          padding-left: 8px;
+        }
+        &:last-of-type {
+          padding-right: 8px;
+        }
+
+        .image-included {
+          display: flex;
+          align-items: center;
+
+          &_img {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 8px;
+
+            img {
+              height: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+  &.sortable {
+    thead {
+      tr {
+        th {
+          .table-head-data {
+            display: flex;
+            align-items: center;
+            opacity: 0.63;
+            font-size: 12px;
+            font-weight: 500;
+            cursor: pointer;
+
+            .sort {
+              display: flex;
+              flex-direction: column;
+              margin-left: 15px;
+              i {
+                line-height: 10px;
+                opacity: 100%;
+              }
+            }
+          }
+
+          &.sort-asc,
+          &.sort-desc {
+            .table-head-data {
+              opacity: 1;
+              font-weight: 600;
+            }
+          }
+          &.sort-asc {
+            .fa-angle-down {
+              display: none;
+            }
+          }
+          &.sort-desc {
+            .fa-angle-up {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+  }
+  &.row-links {
+    thead {
+      tr {
+        th {
+          padding: 10px 0;
+          &:first-of-type {
+            padding-left: 8px;
+          }
+          &:last-of-type {
+            padding-right: none;
+          }
+        }
+      }
+    }
+    tbody {
+      tr {
+        transition: background-color 200ms ease-in-out;
+        cursor: pointer;
+        &:hover {
+          background-color: rgba(0, 0, 0, 0.05);
+        }
+        td {
+          padding: 10px 0;
+          &:first-of-type {
+            padding-left: 8px;
+          }
+          &:last-of-type {
+            font-size: 10px;
+            padding-right: 8px;
+          }
+        }
+      }
+    }
+  }
+}

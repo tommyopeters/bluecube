@@ -1,0 +1,171 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  box-sizing: border-box; // overflow: scroll;
+  background: white;
+  font-size: 1.4rem;
+  font-family: Inter;
+  color: #000000;
+  display: grid;
+  grid-template-rows: max-content 1fr max-content;
+  min-height: 100vh;
+
+  &.blue-background {
+    background: #151e57;
+    color: white;
+
+    .container {
+      max-width: 100rem;
+
+      margin: 0 auto;
+    }
+  }
+}
+
+#app {
+  box-sizing: border-box; // overflow: scroll;
+  background: white;
+  font-size: 1.4rem;
+  font-family: Inter;
+  color: #000000;
+  display: grid;
+  grid-template-rows: max-content 1fr max-content;
+  min-height: 100vh;
+
+  &.blue-background {
+    background: #151e57;
+    color: white;
+
+    .container {
+      max-width: 100rem;
+
+      margin: 0 auto;
+    }
+  }
+}
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.user-img {
+  height: 3.2rem;
+  width: 3.2rem;
+  border-radius: 100%;
+
+  img {
+    height: 100%;
+  }
+}
+.green-text {
+  color: #049f08;
+}
+.red-text {
+  color: #eb0909;
+}
+.yellow-text {
+  color: #ffac05;
+}
+.form-group {
+  margin-bottom: 4rem;
+  display: flex;
+  flex-direction: column;
+
+  input[type="text"],
+  input[type="password"],
+  input[type="email"],
+  textarea {
+    border: 1px solid rgba(0, 0, 0, 0.18);
+    padding: 0 1rem;
+    background-color: #ffffff;
+    transition: all 200ms ease-in-out;
+    height: 32px;
+    &:focus {
+      box-shadow: inset 0 1px 1px 0 rgba(0, 0, 0, 0.15);
+    }
+  }
+}
+.hidden {
+  display: none !important;
+}
+.form-double-column {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 2.5rem;
+
+  margin-bottom: 2.5rem;
+
+  .form-group {
+    margin-bottom: 0;
+  }
+}
+.form-image-group {
+  display: flex;
+  align-items: center;
+
+  span {
+    text-align: center;
+    text-decoration: underline;
+    margin-left: 1rem;
+    font-size: 12px;
+  }
+
+  input[type="file"] {
+    display: none;
+  }
+  label {
+    display: flex;
+    width: 7rem;
+    height: 5rem;
+    margin-right: 1rem;
+
+    img {
+      width: 100%;
+      cursor: pointer;
+    }
+  }
+}
+.error {
+  background-color: rgb(247, 65, 65);
+  color: white;
+  font-size: 12px;
+  margin-top: 5px;
+  padding: 5px;
+  padding-left: 35px;
+  position: relative;
+  border-radius: 5px;
+  opacity: 0.9;
+
+  &:after {
+    position: absolute;
+    font-family: "Font Awesome 5 Free";
+    content: "\f071";
+    font-weight: 900;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-55%);
+  }
+}
+@media only screen and (max-width: 1140px) {
+  .container {
+    max-width: 85%;
+    margin: 0 auto;
+  }
+}
+.required:after {
+  content: " *";
+  color: red;
+}

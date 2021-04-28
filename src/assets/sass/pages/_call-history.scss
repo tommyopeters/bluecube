@@ -1,0 +1,64 @@
+#call-history {
+  .container {
+    section {
+      margin-top: 5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .custom-select-clone {
+        position: relative;
+        .select-selected {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          column-gap: 5rem;
+
+          & > div {
+            display: flex;
+
+            & > span {
+              opacity: 0.47;
+              color: #01051b;
+              margin-right: 1.5rem;
+            }
+          }
+        }
+      }
+      .warning {
+        text-align: center;
+        margin: 1.5rem;
+        font-size: 16px;
+        opacity: 0.6;
+        color: red;
+      }
+      .select-selected {
+        min-width: 14.5rem;
+        cursor: pointer;
+      }
+      h3 {
+        color: #01051b;
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 3rem;
+      }
+      .filters {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 3rem;
+        width: 100%;
+        .date-filter {
+          width: max-content;
+          margin-bottom: 5rem;
+        }
+
+        .other-filters {
+          width: 100%;
+          display: grid;
+          grid-template-columns: 3fr 3.5fr 4.5fr 3fr 3fr;
+          column-gap: 1rem;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,105 @@
+header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #151e57;
+
+  .container {
+    width: 1440px;
+    padding: 0 3rem;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    color: white;
+
+    .logo {
+      // font-family: "Avenir Next";
+      font-size: 32px;
+      font-weight: 500;
+    }
+
+    nav {
+      ul {
+        display: flex;
+        list-style-type: none;
+        justify-content: space-between;
+
+        a {
+          text-decoration: none;
+          color: white;
+          padding: 2.5rem;
+          font-size: 16px;
+          font-weight: 600;
+
+          &.active {
+            color: #88ece6;
+            border-bottom: 4px solid #88ece6;
+          }
+        }
+      }
+    }
+    .dev-status {
+      display: flex;
+
+      & > span {
+        &:first-of-type,
+        &:last-of-type {
+          opacity: 0.8;
+          font-size: 1.6rem;
+        }
+        &:first-of-type {
+          margin-right: 1rem;
+        }
+        &:last-of-type {
+          margin-left: 1rem;
+        }
+      }
+    }
+    .profile {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      position: relative;
+
+      .profile-info {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        .profile-name {
+          font-size: 14px;
+        }
+        .profile-email {
+          font-size: 12px;
+          opacity: 0.65;
+        }
+      }
+      .fa-caret-down {
+        margin-left: 0.5rem;
+      }
+      ul.profile-dropdown {
+        list-style: none;
+        position: absolute;
+        width: 85%;
+        border-radius: 5px;
+        background-color: #ffffff;
+        box-shadow: 0 2px 4px 0 rgba(1, 5, 27, 0.19);
+        padding: 1.3rem 1.5rem;
+        top: 130%;
+        right: 0;
+
+        &:hover {
+          background-color: rgb(236, 236, 236);
+        }
+
+        li {
+          color: #054da5;
+          font-size: 14px;
+          font-weight: 500;
+          i {
+            margin-right: 1rem;
+          }
+        }
+      }
+    }
+  }
+}
