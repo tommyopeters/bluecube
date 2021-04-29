@@ -130,7 +130,7 @@ export const store = new Vuex.Store({
       });
       Promise.all(photos).then((res) => {
         res.forEach((photo, index) => {
-          photo.length = Math.min(photo.length, 4);
+          photo.length = Math.min(photo.length, 2);
           profiles[index].photos = photo;
         });
         commit("setProfiles", profiles);
