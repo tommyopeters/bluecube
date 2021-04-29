@@ -6,10 +6,17 @@
       :profile="profile"
     />
   </section>
+  <section class="profiles" v-else-if="!emptyResult">
+    <loading :active.sync="loading" :is-full-page="true"></loading>
+  </section>
+  <section class="profiles" v-else>
+    No Result Found
+  </section>
 </template>
 
 <script>
 // import $ from "jquery";
+import Loading from "vue-loading-overlay";
 import ProfileCard from "./ProfileCard";
 import { mapGetters, mapActions } from "vuex";
 
@@ -17,12 +24,13 @@ export default {
   name: "Profiles",
   components: {
     ProfileCard,
+    Loading,
   },
   data() {
     return {};
   },
   computed: {
-    ...mapGetters(["profiles", "loading"]),
+    ...mapGetters(["profiles", "loading", "emptyResult"]),
   },
   methods: {
     ...mapActions(["getProfiles"]),

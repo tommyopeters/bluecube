@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <SideNav />
+    <SideNav v-if="!mobileView" />
     <div class="container">
       <Header />
       <Filters />
@@ -10,6 +10,9 @@
 </template>
 
 <script>
+import $ from "jquery";
+import { mapActions, mapGetters } from "vuex";
+
 import SideNav from "./components/SideNav.vue";
 import Header from "./components/Header.vue";
 import Filters from "./components/Filters.vue";
@@ -23,7 +26,47 @@ export default {
     Filters,
     Profiles,
   },
-  methods: {},
+  computed: {
+    ...mapGetters(["mobileView"]),
+  },
+  methods: {
+    ...mapActions(["setView"]),
+  },
+  mounted() {
+    if (window.innerWidth <= 1100) {
+      this.setView(true);
+    } else {
+      this.setView(false);
+    }
+    $(window).resize(() => {
+      if (window.innerWidth <= 1100) {
+        this.setView(true);
+      } else {
+        this.setView(false);
+      }
+    });
+
+    $(".dropdown li:first-of-type").mouseover(function() {
+      $(this)
+        .parent()
+        .addClass("hover-active");
+    });
+    $(".dropdown li:first-of-type").mouseout(function() {
+      $(this)
+        .parent()
+        .removeClass("hover-active");
+    });
+    $(".notification-group .notification:first-of-type").mouseover(function() {
+      $(this)
+        .parent()
+        .addClass("hover-active");
+    });
+    $(".notification-group .notification:first-of-type").mouseout(function() {
+      $(this)
+        .parent()
+        .removeClass("hover-active");
+    });
+  },
 };
 </script>
 

@@ -11,13 +11,41 @@ export const store = new Vuex.Store({
     loading: false,
     currentProfile: null,
     query: "a",
+    mobileView: false,
+    emptyResult: false,
+    notifications: [
+      {
+        image:
+          "https://images.unsplash.com/photo-1610646402667-79fce5fc1666?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyMjY3MzZ8MHwxfGFsbHwzfHx8fHx8Mnx8MTYxOTY4MTUzMw&ixlib=rb-1.2.1&q=80&w=400",
+        message: "Michael liked you!",
+        time: "About 20 minutes ago",
+        type: "like",
+      },
+      {
+        image:
+          "https://images.unsplash.com/photo-1614440288714-57c4b5b6700a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyMjY3MzZ8MHwxfGFsbHwxfHx8fHx8Mnx8MTYxOTY4MTUzMw&ixlib=rb-1.2.1&q=80&w=400",
+        message: "Jack liked you!",
+        time: "About 40 minutes ago",
+        type: "like",
+      },
+      {
+        image:
+          "https://images.unsplash.com/photo-1591157866194-b3b4e279c698?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyMjY3MzZ8MHwxfGFsbHw0fHx8fHx8Mnx8MTYxOTY4MTUzMw&ixlib=rb-1.2.1&q=80&w=400",
+        message: "Michael commented on your photo!",
+        time: "About 56 minutes ago",
+        type: "comment",
+      },
+    ],
   },
   getters: {
     appId: (state) => state.appId,
     profiles: (state) => state.profiles,
     loading: (state) => state.loading,
     query: (state) => state.query,
+    mobileView: (state) => state.mobileView,
+    emptyResult: (state) => state.emptyResult,
     currentProfile: (state) => state.currentProfile,
+    notifications: (state) => state.notifications,
   },
   mutations: {
     setProfiles: (state, profiles) => {
@@ -31,6 +59,12 @@ export const store = new Vuex.Store({
     },
     setQuery: (state, string) => {
       state.query = string;
+    },
+    setView: (state, boolean) => {
+      state.mobileView = boolean;
+    },
+    setResult: (state, boolean) => {
+      state.emptyResult = boolean;
     },
   },
   actions: {
@@ -61,10 +95,17 @@ export const store = new Vuex.Store({
           });
 
           return final;
-        });
+        })
+        .catch(() => false);
 
-      commit("setProfiles", profiles);
-      dispatch("getProfilesPhotos");
+      console.log(profiles);
+
+      if (profiles && profiles.length > 1) {
+        commit("setProfiles", profiles);
+        dispatch("getProfilesPhotos");
+      } else {
+        commit("setResult", true);
+      }
     },
     getProfilesPhotos: async ({ commit, getters }) => {
       // console.log(getters.profiles);
@@ -99,6 +140,9 @@ export const store = new Vuex.Store({
     },
     setCurrentProfile: ({ commit }, id) => {
       commit("setCurrentProfile", id);
+    },
+    setView: ({ commit }, boolean) => {
+      commit("setView", boolean);
     },
     search: ({ commit, dispatch }, string) => {
       commit("setQuery", string.toLowerCase());

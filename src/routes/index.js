@@ -9,7 +9,7 @@
 // import PasswordReset from "../components/pages/PasswordReset";
 
 export const routes = [
-  // { path: "/account", component: Account, meta: { title: "Account", requiresAuth: true } },
+  // { path: "*", redirect: "/" },
   // { path: "/api-key", component: ApiKey, meta: { title: "API Key", requiresAuth: true } },
   // {
   //   path: "/call-history",
