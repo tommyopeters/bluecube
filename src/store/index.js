@@ -6,7 +6,8 @@ Vue.use(Vuex);
 
 export const store = new Vuex.Store({
   state: {
-    appId: "jIFX73QIHKVxFidmtVYXozBGu4da-nIDgjMIzY2OyZE",
+    // appId: "jIFX73QIHKVxFidmtVYXozBGu4da-nIDgjMIzY2OyZE",
+    appId: "0fxfvWss275le2AEZx9j7qoqvdEBYVUQwVVL-xf5FB0",
     profiles: [],
     loading: false,
     currentProfile: null,
@@ -72,7 +73,7 @@ export const store = new Vuex.Store({
       commit("setLoading", true);
       let profiles = await axios
         .get(
-          `https://api.unsplash.com/search/users/?page=1&per_page=20&query=${getters.query}&client_id=${getters.appId}`
+          `https://api.unsplash.com/search/users/?page=1&per_page=10&query=${getters.query}&client_id=${getters.appId}`
         )
         .then(async (data) => {
           let results = data.data.results;
