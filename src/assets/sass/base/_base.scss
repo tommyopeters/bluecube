@@ -196,6 +196,9 @@ header,
     section.filters {
       display: flex;
       align-items: center;
+      > div {
+        flex-grow: 1;
+      }
     }
     section.profiles {
       margin: 0 auto;
@@ -219,7 +222,7 @@ header,
 
         &.active {
           transition: all 200ms ease-in-out;
-          transform: scale(1.1);
+          // transform: scale(0.9);
         }
 
         .image-control {
