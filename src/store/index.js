@@ -9,11 +9,15 @@ export const store = new Vuex.Store({
     appId: "jIFX73QIHKVxFidmtVYXozBGu4da-nIDgjMIzY2OyZE",
     profiles: [],
     loading: false,
+    currentProfile: null,
+    query: "a",
   },
   getters: {
     appId: (state) => state.appId,
     profiles: (state) => state.profiles,
     loading: (state) => state.loading,
+    query: (state) => state.query,
+    currentProfile: (state) => state.currentProfile,
   },
   mutations: {
     setProfiles: (state, profiles) => {
@@ -22,13 +26,19 @@ export const store = new Vuex.Store({
     setLoading: (state, boolean) => {
       state.loading = boolean;
     },
+    setCurrentProfile: (state, id) => {
+      state.currentProfile = id;
+    },
+    setQuery: (state, string) => {
+      state.query = string;
+    },
   },
   actions: {
     getProfiles: async ({ commit, getters, dispatch }) => {
       commit("setLoading", true);
       let profiles = await axios
         .get(
-          `https://api.unsplash.com/search/users/?page=1&per_page=20&query=a&client_id=${getters.appId}`
+          `https://api.unsplash.com/search/users/?page=1&per_page=20&query=${getters.query}&client_id=${getters.appId}`
         )
         .then(async (data) => {
           let results = data.data.results;
@@ -64,6 +74,8 @@ export const store = new Vuex.Store({
           return data.data.map((res) => {
             return {
               id: res.id,
+              width: res.width,
+              height: res.height,
               urls: res.urls,
               regular_url: res.urls.small,
               download: res.links.download,
@@ -84,6 +96,13 @@ export const store = new Vuex.Store({
           commit("setLoading", false);
         }
       });
+    },
+    setCurrentProfile: ({ commit }, id) => {
+      commit("setCurrentProfile", id);
+    },
+    search: ({ commit, dispatch }, string) => {
+      commit("setQuery", string.toLowerCase());
+      dispatch("getProfiles");
     },
   },
 });

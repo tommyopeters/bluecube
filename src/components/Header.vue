@@ -2,8 +2,8 @@
   <header>
     <div class="search">
       <i class="fas fa-search"></i>
-      <input type="text" placeholder="Find Something..." />
-      <div class="search-btn">Search</div>
+      <input type="text" v-model="query" placeholder="Find Something..." />
+      <div class="search-btn" @click="submit">Search</div>
     </div>
     <div class="notifications">
       <i class="fas fa-bell"></i>
@@ -21,7 +21,21 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
 export default {
-  name: "SideNav"
+  name: "SideNav",
+  data() {
+    return {
+      query: "",
+    };
+  },
+  methods: {
+    ...mapActions(["search"]),
+    submit: function() {
+      if (this.query !== "") {
+        this.search(this.query);
+      }
+    },
+  },
 };
 </script>

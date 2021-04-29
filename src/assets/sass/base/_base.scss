@@ -14,7 +14,7 @@ body {
   box-sizing: border-box; // overflow: scroll;
   background: #fafafc;
   font-size: 1.4rem;
-  font-family: "Lato", Helvetica, sans-serif;
+  font-family: "Montserrat", Helvetica, sans-serif;
   color: #6d6b80;
   min-height: 100vh;
 }
@@ -101,7 +101,7 @@ header,
     }
   }
   .container {
-    padding: 0 4rem;
+    padding: 0 7rem 0 4rem;
 
     header {
       display: flex;
@@ -198,28 +198,156 @@ header,
       align-items: center;
     }
     section.profiles {
+      margin: 0 auto;
+      margin-top: 4rem;
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
-      gap: 2rem;
+      gap: 3rem;
       .profile {
         width: 18rem;
         height: 26rem;
         background-repeat: no-repeat;
         background-size: auto 100%;
+        background-position: 50% 50%;
+        position: relative;
+        overflow: hidden;
+        border-radius: 8px;
+        box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.2);
 
         color: white;
 
-        &:after {
+        &.active {
+          transition: all 200ms ease-in-out;
+          transform: scale(1.1);
+        }
+
+        .image-control {
+          position: absolute;
+          width: 18rem;
+          height: 26rem;
+          z-index: -2;
+          /* Add the blur effect */
+          filter: blur(2px);
+          -webkit-filter: blur(2px);
+        }
+
+        &:before {
+          position: absolute;
+          // z-index: -1;
+          top: 0;
+          left: 0;
           content: "";
+          display: block;
           height: 100%;
           width: 100%;
           background-image: linear-gradient(
             0deg,
-            rgba(2, 0, 36, 0.44021358543417366) 6%,
-            rgba(0, 0, 0, 0.21332282913165268) 38%,
-            rgba(255, 255, 255, 0) 100%
+            rgba(2, 0, 36, 0.5) 0%,
+            rgba(0, 0, 0, 0.203) 28%,
+            rgba(255, 255, 255, 0) 50%
           );
+        }
+
+        &-container {
+          position: absolute;
+          z-index: 2;
+          height: 100%;
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          .photo-bars {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 0 5px;
+
+            .photo-bar {
+              position: relative;
+              height: 1rem;
+              width: 4rem;
+              cursor: pointer;
+              &::after {
+                content: "";
+                display: block;
+                height: 2px;
+                width: 100%;
+                position: absolute;
+                top: 50%;
+                left: 0;
+                border-radius: 2px;
+
+                background-color: rgba(255, 255, 255, 0.283);
+              }
+              &.active {
+                &::after {
+                  background-color: rgba(255, 255, 255, 0.6);
+                }
+              }
+            }
+          }
+          .bottom-row {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 7rem;
+
+            padding: 8px 1.7rem;
+            font-weight: 500;
+
+            &.active {
+              padding: 1rem 1rem;
+              height: 10rem;
+              background-color: white;
+              color: $base-color;
+              .location {
+                color: #6d6b80;
+              }
+              .urls {
+                display: grid;
+              }
+            }
+
+            .location {
+              margin-top: 5px;
+              font-size: 8px;
+
+              i {
+                margin-right: 5px;
+              }
+            }
+
+            .urls {
+              display: none;
+              grid-template-columns: 1fr 1fr;
+              column-gap: 8px;
+              a {
+                box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.4);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                height: 2.4rem;
+                border-radius: 4px;
+                background-color: $base-color;
+                font-size: 1.3rem;
+
+                text-decoration: none;
+
+                &.instagram {
+                  background-color: #c63635;
+                  font-size: 1.4rem;
+
+                  &.disabled {
+                    background-color: #c6353579;
+                    cursor: not-allowed;
+                    pointer-events: none;
+                  }
+                }
+              }
+            }
+          }
         }
       }
     }
